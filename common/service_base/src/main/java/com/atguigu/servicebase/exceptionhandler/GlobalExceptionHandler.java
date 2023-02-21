@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(GuliException.class)
     @ResponseBody //为了返回数据
     public R error(GuliException e) {
-        log.error(e.getMessage());
+        log.error(e.getMessage());//如果程序异常，把异常信息输出到文件中
         e.printStackTrace();
 
         return R.error().code(e.getCode()).message(e.getMsg());

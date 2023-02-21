@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>service</module>
+        <module>common</module>
     </modules>
     <!--    <modules>-->
 <!--        <module>service</module>-->

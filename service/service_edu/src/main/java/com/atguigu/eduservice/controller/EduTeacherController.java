@@ -4,6 +4,7 @@ package com.atguigu.eduservice.controller;
 import com.atguigu.commonutils.R;
 import com.atguigu.eduservice.entity.EduTeacher;
 import com.atguigu.eduservice.service.EduTeacherService;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -39,6 +40,7 @@ public class EduTeacherController {
         List<EduTeacher> list = teacherService.list(null);
         return R.ok().data("items",list);
     }
+    //2 逻辑删除讲师的方法
     @ApiOperation(value = "逻辑删除讲师")
     @DeleteMapping("{id}")
     public R removeTeacher(@ApiParam(name = "id", value = "讲师ID", required = true)
@@ -50,6 +52,25 @@ public class EduTeacherController {
             return R.error();
         }
     }
+
+    //3 分页查询讲师的方法
+    //current 当前页
+    //limit 每页记录数
+    @GetMapping("pageTeacher/{current}/{limit}")
+    public R pageListTeacher(@PathVariable long current,
+                             @PathVariable long limit){
+        //创建page对象
+        Page<EduTeacher> pageTeacher = new Page<>(current,limit);
+        //调用方法实现分页
+        //调用方法的时候，底层封装，把分页所有的数据封装到pageTeacher对象里面
+        teacherService.page(pageTeacher,null);
+
+        long total = pageTeacher.getTotal();//获取总记录数
+        List<EduTeacher> records = pageTeacher.getRecords();//获取数据集合list
+
+        return R.ok().data("total",total).data("records",records);
+    }
+
 
 
 

@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
 public class SubjectExcelListener extends AnalysisEventListener<SubjectData> {
 
-    //因为SubjectExcelListener不能交给spring进行管理，需要自己new，不能注入其他对象
+    //因为SubjectExcelListener不能交给spring进行管理，也就是没在方法上加注解，所以需要自己new，手动创建有参和无参方法，不能注入其他对象
     //不能实现数据库操作
     public EduSubjectService subjectService;
     public SubjectExcelListener() {}

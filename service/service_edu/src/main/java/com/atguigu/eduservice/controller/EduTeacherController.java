@@ -43,12 +43,12 @@ public class EduTeacherController {
     @GetMapping("findAll")
     public R findAllTeacher(){
 
-        try {
-            int i = 10/0;
-        }catch(Exception e) {
-            //执行自定义异常
-            throw new GuliException(20001,"执行了自定义异常处理....");
-        }
+//        try {
+//            int i = 10/0;
+//        }catch(Exception e) {
+//            //执行自定义异常
+//            throw new GuliException(20001,"执行了自定义异常处理....");
+//        }
         List<EduTeacher> list = teacherService.list(null);
         return R.ok().data("items",list);
     }

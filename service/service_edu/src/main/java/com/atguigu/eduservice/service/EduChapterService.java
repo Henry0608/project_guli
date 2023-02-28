@@ -18,4 +18,6 @@ public interface EduChapterService extends IService<EduChapter> {
 
     //课程大纲列表,根据课程id进行查询
     List<ChapterVo> getChapterVideoByCourseId(String courseId);
+
+    boolean deleteChapter(String chapterId);
 }

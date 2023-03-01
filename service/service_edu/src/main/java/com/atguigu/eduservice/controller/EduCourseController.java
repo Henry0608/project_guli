@@ -9,6 +9,8 @@ import com.atguigu.eduservice.service.EduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * 课程 前端控制器
@@ -61,6 +63,21 @@ public class EduCourseController {
         eduCourse.setId(id);
         eduCourse.setStatus("Normal");//设置课程发布状态
         courseService.updateById(eduCourse);
+        return R.ok();
+    }
+
+    //课程列表 基本实现
+    //TODO  完善条件查询带分页
+    @GetMapping
+    public R getCourseList() {
+        List<EduCourse> list = courseService.list(null);
+        return R.ok().data("list",list);
+    }
+
+    //删除课程
+    @DeleteMapping("{courseId}")
+    public R deleteCourse(@PathVariable String courseId) {
+        courseService.removeCourse(courseId);
         return R.ok();
     }
 

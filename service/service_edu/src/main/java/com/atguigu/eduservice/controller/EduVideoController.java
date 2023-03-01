@@ -49,6 +49,7 @@ public class EduVideoController {
         if(!StringUtils.isEmpty(videoSourceId)) {
             //根据视频id，远程调用实现视频删除
             R result = vodClient.removeAlyVideo(videoSourceId);
+            // 测试熔断器
             if(result.getCode() == 20001) {
                 throw new GuliException(20001,"删除视频失败，熔断器...");
             }

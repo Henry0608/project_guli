@@ -1,6 +1,7 @@
 package com.atguigu.educenter.service;
 
 import com.atguigu.educenter.entity.UcenterMember;
+import com.atguigu.educenter.entity.vo.RegisterVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,6 @@ import org.springframework.stereotype.Repository;
 public interface UcenterMemberService extends IService<UcenterMember> {
 
     String login(UcenterMember member);
+
+    void register(RegisterVo registerVo);
 }

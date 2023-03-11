@@ -2,6 +2,7 @@ package com.atguigu.educenter.mapper;
 
 import com.atguigu.educenter.entity.UcenterMember;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author testjava
  * @since 2023-03-10
  */
+@Repository
 public interface UcenterMemberMapper extends BaseMapper<UcenterMember> {
 
 }
